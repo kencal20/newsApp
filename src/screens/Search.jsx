@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, FlatList } from "react-native";
-import SearchBar from "../components/searchBar"
-import Card from "../components/Card"
+import SearchBar from "../components/searchBar";
+import Card from "../components/Card";
 import axios from "axios";
 
 export default function Search() {
@@ -10,12 +10,15 @@ export default function Search() {
 
   const searchArticles = () => {
     axios
-      .get("https://newsapi.org/v2/top-headlines?country=us&apiKey=e7248f0092684951ac94e8f972d19958", {
-        params: {
-          category: "general",
-          q: searchText,
-        },
-      })
+      .get(
+        "https://newsapi.org/v2/top-headlines?country=us&apiKey=e7248f0092684951ac94e8f972d19958",
+        {
+          params: {
+            category: "general",
+            q: searchText,
+          },
+        }
+      )
       .then((response) => {
         setArticles(response.data.articles);
       })
@@ -26,9 +29,14 @@ export default function Search() {
 
   return (
     <View>
-      <SearchBar searchText={searchText} setSearchText={setSearchText}  onSubmit={searchArticles}/>
+      <SearchBar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        onSubmit={searchArticles}
+      />
       <FlatList
         data={articles}
+        keyExtractor={(item) => item.publishedAt}
         renderItem={({ item }) => (
           <Card
             urlToImage={item.urlToImage}
@@ -37,9 +45,9 @@ export default function Search() {
             author={item.author}
             publishedAt={item.publishedAt}
             sourceName={item.source.name}
+            url={item.url}
           />
         )}
-        keyExtractor={(item) => item.title}
       />
     </View>
   );

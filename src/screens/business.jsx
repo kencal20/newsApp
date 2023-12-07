@@ -30,9 +30,9 @@ export default function Business() {
 
   return (
     <View>
-      <FlatList
+    <FlatList
         data={articles}
-        keyExtractor={(item) => item.url} 
+       keyExtractor={(item) =>`${item.url}-${item.publishedAt}-${item.description}`}
         renderItem={({ item }) => (
           <Card
             urlToImage={item.urlToImage}
@@ -42,8 +42,6 @@ export default function Business() {
             publishedAt={item.publishedAt}
             sourceName={item.source.name}
             url={item.url}
-            keyExtractor={(item)=>item.title}
-
           />
         )}
       />

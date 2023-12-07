@@ -25,8 +25,9 @@ export default function Card(props) {
           <Text style={styles.authorHeading}>
             by:<Text style={styles.authorValue}>{props.author}</Text>
           </Text>
-          <Text style={styles.date}>{props.publishedAt}</Text>
+     
         </View>
+      <Text>Published:<Text style={styles.date}>{props.publishedAt}</Text></Text>  
         <View style={{ marginTop: 10 }}>
           <Text style={styles.sourceHeading}>
             source:<Text style={styles.sourceValue}>{props.sourceName}</Text>
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#00b4d8",
     fontSize: 17,
+    padding:10
   },
   sourceHeading: {
     fontWeight: "800",

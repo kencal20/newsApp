@@ -32,7 +32,7 @@ export default function Health() {
     <View>
       <FlatList
         data={articles}
-        keyExtractor={(item) => item.url} 
+        keyExtractor={(item) =>`${item.description}-${item.source.name}-${item.author}`}
         renderItem={({ item }) => (
           <Card
             urlToImage={item.urlToImage}
@@ -42,8 +42,6 @@ export default function Health() {
             publishedAt={item.publishedAt}
             sourceName={item.source.name}
             url={item.url}
-            keyExtractor={(item)=>item.title}
-
           />
         )}
       />

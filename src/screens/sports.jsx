@@ -32,7 +32,7 @@ export default function Sports() {
     <View>
       <FlatList
         data={articles}
-        keyExtractor={(item) => item.url} 
+        keyExtractor={(item) => item.url}
         renderItem={({ item }) => (
           <Card
             urlToImage={item.urlToImage}
@@ -42,8 +42,6 @@ export default function Sports() {
             publishedAt={item.publishedAt}
             sourceName={item.source.name}
             url={item.url}
-            keyExtractor={(item)=>item.title}
-
           />
         )}
       />

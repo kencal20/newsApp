@@ -18,6 +18,7 @@ export default function Home() {
       )
       .then((response) => {
         setArticles(response.data.articles);
+        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -32,7 +33,7 @@ export default function Home() {
     <View>
       <FlatList
         data={articles}
-        keyExtractor={(item) => item.url} 
+       keyExtractor={(item) => `${item.url}-${item.publishedAt}-${item.source.name}-${item.author}`}
         renderItem={({ item }) => (
           <Card
             urlToImage={item.urlToImage}
@@ -42,11 +43,10 @@ export default function Home() {
             publishedAt={item.publishedAt}
             sourceName={item.source.name}
             url={item.url}
-            keyExtractor={(item)=>item.title}
-
           />
         )}
       />
+
     </View>
   );
 }
