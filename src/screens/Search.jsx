@@ -12,7 +12,7 @@ export default function Search() {
     axios
       .get("https://newsapi.org/v2/top-headlines?country=us&apiKey=e7248f0092684951ac94e8f972d19958", {
         params: {
-          category: "technology",
+          category: "general",
           q: searchText,
         },
       })
